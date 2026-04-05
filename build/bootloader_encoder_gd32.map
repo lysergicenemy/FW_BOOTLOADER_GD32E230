@@ -1,0 +1,133 @@
+
+Discarded input sections
+
+ .data          0x00000000        0x0 C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+ .bss           0x00000000        0x0 C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+ .text          0x00000000        0x0 build/startup_minimal.o
+ .data          0x00000000        0x0 build/startup_minimal.o
+ .bss           0x00000000        0x0 build/startup_minimal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00000400         xr
+RAM              0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/main.o
+LOAD C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+LOAD build/stm32_bootloader_minimal.o
+LOAD build/startup_minimal.o
+                0x20001000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000       0x2c
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000       0x2c build/startup_minimal.o
+                0x08000000                g_pfnVectors
+                0x0800002c                        . = ALIGN (0x4)
+
+.text           0x0800002c      0x3d0
+                0x0800002c                        . = ALIGN (0x4)
+ *(.text)
+ .text          0x0800002c      0x120 C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+ *(.text*)
+ .text.startup  0x0800014c      0x2a8 C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+                0x0800014c                main
+ .text.Reset_Handler
+                0x080003f4        0x6 build/startup_minimal.o
+                0x080003f4                Reset_Handler
+ .text.Default_Handler
+                0x080003fa        0x2 build/startup_minimal.o
+                0x080003fa                Default_Handler
+                0x080003fc                        . = ALIGN (0x4)
+                0x080003fc                        _etext = .
+
+.glue_7         0x080003fc        0x0
+ .glue_7        0x080003fc        0x0 linker stubs
+
+.glue_7t        0x080003fc        0x0
+ .glue_7t       0x080003fc        0x0 linker stubs
+
+.vfp11_veneer   0x080003fc        0x0
+ .vfp11_veneer  0x080003fc        0x0 linker stubs
+
+.v4_bx          0x080003fc        0x0
+ .v4_bx         0x080003fc        0x0 linker stubs
+
+.iplt           0x080003fc        0x0
+ .iplt          0x080003fc        0x0 build/startup_minimal.o
+
+.rel.dyn        0x080003fc        0x0
+ .rel.iplt      0x080003fc        0x0 build/startup_minimal.o
+
+.rodata         0x080003fc        0x0
+                0x080003fc                        . = ALIGN (0x4)
+ *(.rodata)
+ *(.rodata*)
+                0x080003fc                        . = ALIGN (0x4)
+                0x080003fc                        _sidata = LOADADDR (.data)
+
+.data           0x20000000        0x0 load address 0x080003fc
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x080003fc
+ .igot.plt      0x20000000        0x0 build/startup_minimal.o
+
+.bss            0x20000000        0x0 load address 0x080003fc
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss*)
+ *(COMMON)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _ebss = .
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+ *(.ARM.exidx*)
+ *(.ARM.extab*)
+ *(.eh_frame*)
+ *(.init_array*)
+ *(.fini_array*)
+ *(.preinit_array*)
+OUTPUT(build/bootloader_encoder_gd32.elf elf32-littlearm)
+LOAD linker stubs
+LOAD D:/toolchain/arm_gcc/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.base/nofp\libc.a
+LOAD D:/toolchain/arm_gcc/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.base/nofp\libm.a
+LOAD D:/toolchain/arm_gcc/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.base/nofp\libgcc.a
+
+.comment        0x00000000       0x44
+ .comment       0x00000000       0x44 C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+                                 0x45 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x2e C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+ .ARM.attributes
+                0x0000002e       0x22 build/startup_minimal.o
+
+Cross Reference Table
+
+Symbol                                            File
+Default_Handler                                   build/startup_minimal.o
+Reset_Handler                                     build/startup_minimal.o
+_estack                                           build/startup_minimal.o
+g_pfnVectors                                      build/startup_minimal.o
+jump2app                                          build/stm32_bootloader_minimal.o (symbol from plugin)
+                                                  build/main.o (symbol from plugin)
+main                                              C:\Users\user\AppData\Local\Temp\ccB7xFYR.ltrans0.ltrans.o
+                                                  build/main.o (symbol from plugin)
+                                                  build/startup_minimal.o
+stm32_bootloader_run                              build/stm32_bootloader_minimal.o (symbol from plugin)
+                                                  build/main.o (symbol from plugin)
