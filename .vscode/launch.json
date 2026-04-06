@@ -4,7 +4,7 @@
 		{
 			"name": "Cortex Debug",
 			"cwd": "${workspaceRoot}",
-			"executable": "./build/bootloader_encoder_gd32.elf",
+			"executable": "./build/bootloader_gd32.elf",
 			"svdFile": "./jlink/GD32E230.svd",
 			"request": "launch",
 			"type": "cortex-debug",

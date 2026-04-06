@@ -13,7 +13,7 @@
 ######################################
 # target
 ######################################
-TARGET = bootloader_encoder_gd32
+TARGET = bootloader_gd32
 
 ######################################
 # building variables

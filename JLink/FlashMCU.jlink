@@ -1,6 +1,6 @@
 r
-loadbin build\bootloader_encoder_gd32.bin, 0x08000000
-verifybin build\bootloader_encoder_gd32.bin, 0x08000000
+loadbin build\bootloader_gd32.bin, 0x08000000
+verifybin build\bootloader_gd32.bin, 0x08000000
 r
 g
 q

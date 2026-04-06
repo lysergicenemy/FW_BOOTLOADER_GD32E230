@@ -1,4 +1,4 @@
-savebin build\bootloader_encoder_gd32.bin, 0x00, 0x4000
+savebin build\bootloader_gd32.bin, 0x00, 0x4000
 r
 g
 q

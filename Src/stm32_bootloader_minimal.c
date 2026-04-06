@@ -272,7 +272,7 @@ void jump2app(void)
 
 void jump2app(void)
 {
-    //__disable_irq();
+    __disable_irq();
     SCB->VTOR = APP_START_ADDR;
     uint32_t sp = *(volatile uint32_t *)APP_START_ADDR;
     uint32_t pc = *(volatile uint32_t *)(APP_START_ADDR + 4);
