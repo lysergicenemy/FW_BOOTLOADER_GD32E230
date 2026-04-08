@@ -8,7 +8,7 @@
  */
 
 #include "gd32e23x.h"
-#include "stm32_bootloader.h"
+#include "bootloader.h"
 
 /* Simple inline functions */
 static inline void send_byte(uint8_t data)

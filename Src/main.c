@@ -6,7 +6,7 @@
  */
 
 #include "gd32e23x.h"
-#include "stm32_bootloader.h"
+#include "bootloader.h"
 
 /* Memory layout */
 #define APP_START_ADDR 0x08000400UL /* Application starts after 1KB bootloader */
@@ -52,7 +52,7 @@ int main(void)
     if (RTC_BKP0 != MAGIC_WORD)
     /* Magic word is not correct - jump to application */
 #else
-    if ((!GPIO_ISTAT(BL_GPIO_PORT) & (GPIO_PIN_0)))
+    if ((!GPIO_ISTAT(BL_GPIO_PORT) & (BL_GPIO_PIN)))
     /* GPIO is LOW state - jump to application */
 #endif
     {

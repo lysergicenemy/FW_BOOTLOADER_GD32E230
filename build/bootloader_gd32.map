@@ -1,8 +1,8 @@
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
- .bss           0x00000000        0x0 C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+ .data          0x00000000        0x0 C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
+ .bss           0x00000000        0x0 C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
  .text          0x00000000        0x0 build/startup_minimal.o
  .data          0x00000000        0x0 build/startup_minimal.o
  .bss           0x00000000        0x0 build/startup_minimal.o
@@ -17,8 +17,8 @@ RAM              0x20000000         0x00001000         xrw
 Linker script and memory map
 
 LOAD build/main.o
-LOAD C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
-LOAD build/stm32_bootloader_minimal.o
+LOAD C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
+LOAD build/bootloader.o
 LOAD build/startup_minimal.o
                 0x20001000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
 
@@ -32,9 +32,9 @@ LOAD build/startup_minimal.o
 .text           0x0800002c      0x3d0
                 0x0800002c                        . = ALIGN (0x4)
  *(.text)
- .text          0x0800002c      0x120 C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+ .text          0x0800002c      0x120 C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
  *(.text*)
- .text.startup  0x0800014c      0x2a8 C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+ .text.startup  0x0800014c      0x2a8 C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
                 0x0800014c                main
  .text.Reset_Handler
                 0x080003f4        0x6 build/startup_minimal.o
@@ -107,13 +107,13 @@ LOAD D:/toolchain/arm_gcc/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.base/no
 LOAD D:/toolchain/arm_gcc/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.base/nofp\libgcc.a
 
 .comment        0x00000000       0x44
- .comment       0x00000000       0x44 C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+ .comment       0x00000000       0x44 C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
                                  0x45 (size before relaxing)
 
 .ARM.attributes
                 0x00000000       0x2c
  .ARM.attributes
-                0x00000000       0x2e C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+                0x00000000       0x2e C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
  .ARM.attributes
                 0x0000002e       0x22 build/startup_minimal.o
 
@@ -124,10 +124,10 @@ Default_Handler                                   build/startup_minimal.o
 Reset_Handler                                     build/startup_minimal.o
 _estack                                           build/startup_minimal.o
 g_pfnVectors                                      build/startup_minimal.o
-jump2app                                          build/stm32_bootloader_minimal.o (symbol from plugin)
+jump2app                                          build/bootloader.o (symbol from plugin)
                                                   build/main.o (symbol from plugin)
-main                                              C:\Users\user\AppData\Local\Temp\cc0pm6oz.ltrans0.ltrans.o
+main                                              C:\Users\user\AppData\Local\Temp\cckYJd6h.ltrans0.ltrans.o
                                                   build/main.o (symbol from plugin)
                                                   build/startup_minimal.o
-stm32_bootloader_run                              build/stm32_bootloader_minimal.o (symbol from plugin)
+stm32_bootloader_run                              build/bootloader.o (symbol from plugin)
                                                   build/main.o (symbol from plugin)
