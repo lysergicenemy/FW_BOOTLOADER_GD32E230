@@ -70,7 +70,8 @@ static void usart0_init(void)
 
     /* USART0 config: 57600, 8N1, RS485 DE enabled */
     USART_BAUD(USART0) = (uint32_t)(8000000U / 57600U);
-    USART_CTL0(USART0) = 0x0042000c;
+    //USART_CTL0(USART0) = 0x0042000c;
+    USART_CTL0(USART0) = 0x0040000C;// disable driver deassertion
     USART_CTL2(USART0) = 0x00005000;
     USART_CTL0(USART0) |= USART_CTL0_UEN;
 }
@@ -80,7 +81,6 @@ static void usart0_init(void)
  */
 static void handle_get(void)
 {
-    // send_byte(ACK_BYTE);
     send_byte(6); /* 7 bytes follow (version + 6 commands, N = bytes - 1) */
     send_byte(BOOTLOADER_VERSION);
     send_byte(CMD_GET);
@@ -97,7 +97,6 @@ static void handle_get(void)
  */
 static void handle_get_id(void)
 {
-    // send_byte(ACK_BYTE);
     send_byte(1); /* N = 1 (2 bytes of ID follow) */
     send_byte(PID_MSB);
     send_byte(PID_LSB);
@@ -232,8 +231,7 @@ static void handle_erase_memory(void)
     /* Unlock flash and erase all application pages */
     flash_unlock();
 
-    
-    //for (uint32_t page = 1; page <= n_pages_minus1 + 1; page++) /* Skip page 0 (bootloader) */
+    // for (uint32_t page = 1; page <= n_pages_minus1 + 1; page++) /* Skip page 0 (bootloader) */
     for (uint32_t page = 1; page < FLASH_TOTAL_PAGES; page++) /* Skip page 0 (bootloader) */
     {
         uint32_t page_address = FLASH_BASE + (page * FLASH_PAGE_SIZE);
@@ -325,35 +323,36 @@ void stm32_bootloader_run(void)
         if ((cmd ^ comp) != 0xFF)
         {
             send_byte(NACK_BYTE);
-            continue;
         }
-
-        /* ack for command */
-        send_byte(ACK_BYTE);
-
-        switch (cmd)
+        else
         {
-        case CMD_GET:
-            handle_get();
-            break;
-        case CMD_GET_ID:
-            handle_get_id();
-            break;
-        case CMD_READ_MEMORY:
-            handle_read_memory();
-            break;
-        case CMD_WRITE_MEMORY:
-            handle_write_memory();
-            break;
-        case CMD_ERASE_MEMORY:
-            handle_erase_memory();
-            break;
-        case CMD_GO:
-            handle_go();
-            break;
-        default:
-            send_byte(NACK_BYTE);
-            break;
+            /* ack for command */
+            send_byte(ACK_BYTE);
+
+            switch (cmd)
+            {
+            case CMD_GET:
+                handle_get();
+                break;
+            case CMD_GET_ID:
+                handle_get_id();
+                break;
+            case CMD_READ_MEMORY:
+                handle_read_memory();
+                break;
+            case CMD_WRITE_MEMORY:
+                handle_write_memory();
+                break;
+            case CMD_ERASE_MEMORY:
+                handle_erase_memory();
+                break;
+            case CMD_GO:
+                handle_go();
+                break;
+            default:
+                send_byte(NACK_BYTE);
+                break;
+            }
         }
     }
 }
